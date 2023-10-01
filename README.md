@@ -1,4 +1,4 @@
 # Kuncen
-Kuncen adalah program manajemen kata sandi yang dirancang dengan tujuan untuk menyederhanakan pengelolaan kata sandi
-pengguna dengan menjaga keamanan data mereka. Nama "Kuncen" dipilih untuk menggambarkan peran program ini sebagai
-pengurus dan penjaga kata sandi pengguna, mirip dengan peran seorang "Kuncen Kraton" yang menjaga istana di Jawa.
+Kuncen is a password management program designed with the aim of guiding password management
+users by keeping their data safe. The name "Kuncen" was chosen to describe the role this program plays
+administrator and custodian of user passwords, similar to a "Kuncen Kraton" role guarding palaces island of jawa in indonesia.
