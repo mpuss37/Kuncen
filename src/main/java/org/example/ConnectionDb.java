@@ -19,7 +19,7 @@ public class ConnectionDb {
             connection = connectToDatabase();
             if (!tableExists(connection, "users") && !tableExists(connection, "data")) {
                 System.out.println("Tabel berhasil dibuat");
-                createTable("users", connection, "CREATE TABLE IF NOT EXISTS users (" + "id_user INTEGER PRIMARY KEY AUTOINCREMENT," + "username TEXT NOT NULL," + "password TEXT NOT NULL" + ")");
+                createTable("users", connection, "CREATE TABLE IF NOT EXISTS users (" + "id_user INTEGER PRIMARY KEY AUTOINCREMENT," + "username TEXT NOT NULL UNIQUE," + "password TEXT NOT NULL" +")");
                 createTable("data", connection, "CREATE TABLE IF NOT EXISTS data (" + "id INTEGER PRIMARY KEY AUTOINCREMENT," + "id_user INTEGER," + "name_app TEXT NOT NULL," + "password TEXT NOT NULL," + "FOREIGN KEY(id_user) REFERENCES users(id_user)" + ")");
                 return true;
             } else {
@@ -40,8 +40,10 @@ public class ConnectionDb {
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, password);
             preparedStatement.executeUpdate();
+            System.out.println("berhasil");
         } catch (SQLException e) {
-            e.printStackTrace();
+            //if a 'username' on database is a value > 0 get message to change username and password, Because col 'username' is unique
+            System.out.println("use different username / password");
         }
     }
 

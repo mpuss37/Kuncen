@@ -12,15 +12,16 @@ import java.security.SecureRandom;
 import java.util.Base64;
 
 public class HashPassword {
+    private String pathFileKey = "/home/mpuss/kodingan/inteelij/kuncen/src/main/resources/ngeblak.jceks";
+
 
     // Method take key and generate key enkripsi
     public Key getOrGenerateSecretKey() throws Exception {
         // open key on file
         KeyStore keyStore = KeyStore.getInstance("JCEKS");
         char[] keystorePassword = "keystore_password".toCharArray();
-
-        try (FileInputStream fis = new FileInputStream("ngeblak.jceks")) {
-            keyStore.load(fis, keystorePassword);
+        try (FileInputStream fileInputStream = new FileInputStream(pathFileKey)) {
+            keyStore.load(fileInputStream, keystorePassword);
         } catch (java.io.FileNotFoundException e) {
             // if key not found, Make new file
             keyStore.load(null, keystorePassword);
@@ -40,7 +41,7 @@ public class HashPassword {
             keyStore.setKeyEntry("my_aes_key", secretKey, keyPassword, null);
 
             // save key on file
-            try (FileOutputStream fos = new FileOutputStream("ngeblak.jceks")) {
+            try (FileOutputStream fos = new FileOutputStream(pathFileKey)) {
                 keyStore.store(fos, keystorePassword);
             }
 

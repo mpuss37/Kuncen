@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Main-Class: org.example.Main
-Class-Path: junit-jupiter-params-5.9.1.jar junit-platform-commons-1.9.1.
- jar sqlite-jdbc-3.43.0.0.jar junit-jupiter-api-5.9.1.jar json-20230227.
- jar junit-platform-engine-1.9.1.jar junit-jupiter-5.9.1.jar junit-jupit
- er-engine-5.9.1.jar opentest4j-1.2.0.jar
+Class-Path: junit-jupiter-api-5.9.1.jar sqlite-jdbc-3.43.0.0.jar junit-j
+ upiter-params-5.9.1.jar junit-platform-commons-1.9.1.jar opentest4j-1.2
+ .0.jar junit-jupiter-engine-5.9.1.jar json-20230227.jar junit-jupiter-5
+ .9.1.jar junit-platform-engine-1.9.1.jar
 
