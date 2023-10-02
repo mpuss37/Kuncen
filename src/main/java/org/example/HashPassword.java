@@ -30,14 +30,14 @@ public class HashPassword {
         // Check key
         if (keyStore.containsAlias("my_aes_key")) {
             // take key
-            char[] keyPassword = "key_password".toCharArray(); // Kata sandi kunci
+            char[] keyPassword = "key_password".toCharArray(); // key password
             return keyStore.getKey("my_aes_key", keyPassword);
         } else {
             // make new key aes
             SecretKey secretKey = generateAESKey();
 
             // save key on file
-            char[] keyPassword = "key_password".toCharArray(); // Kata sandi kunci
+            char[] keyPassword = "key_password".toCharArray(); // key password
             keyStore.setKeyEntry("my_aes_key", secretKey, keyPassword, null);
 
             // save key on file

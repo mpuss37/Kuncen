@@ -2,6 +2,7 @@ package org.example;
 
 public class Main {
     private static Users users = new Users();
+    private static String username, password;
 
     public Main() throws Exception {
         ConnectionDb connectionDb = new ConnectionDb();
@@ -9,13 +10,19 @@ public class Main {
 
     private static void menuMain(String[] args) throws Exception {
         if (args.length == 3 && args[0].equals("-l") || args[0].equals("--login")) {
-            String username = String.valueOf(args[1]);
-            String password = String.valueOf(args[2]);
+            username = String.valueOf(args[1]);
+            password = String.valueOf(args[2]);
+            users.Loginuser(username, password);
+        } else if (args.length == 3 && args[0].equals("-s") || args[0].equals("--signup")) {
+            username = String.valueOf(args[1]);
+            password = String.valueOf(args[2]);
             users.InsertUser(username, password);
         } else if (args[0].equals("-h") || args[0].equals("--help")) {
+            System.out.println("Kuncen-Manager (version 1.0, revision 9)");
             System.out.println("Usage:\n" +
                     " kuncen [OPTIONS]...[VALUES]\t\n" +
                     "  -l, --login [username] [password]    Log in to an existing user account.\n" +
+                    "  -s, --signup [username] [password]    Sign up to register user account.\n" +
                     "  -h, --help          Display usage,options and help.\n");
         }
     }

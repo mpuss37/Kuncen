@@ -1,21 +1,20 @@
 package org.example;
 
 import java.security.Key;
-import java.sql.Connection;
 import java.util.Scanner;
 
 public class Users {
-    private static String username;
-    private static String password;
-    private static String encryptedPassword;
     private static Scanner scanner = new Scanner(System.in);
     private static ConnectionDb connectionDb = new ConnectionDb();
-    private static HashPassword hashPassword = new HashPassword();
+    private static PasswordManager passwordManager = new PasswordManager();
+
+    public static void Loginuser(String username, String password) throws Exception {
+        connectionDb.CheckDataUser(username,password);
+    }
+
 
     public static void InsertUser(String username, String password) throws Exception {
-        Key key = hashPassword.getOrGenerateSecretKey();
-        encryptedPassword = hashPassword.encrypt(password,key);
-        connectionDb.insertDataUser(username, encryptedPassword);
+        connectionDb.InsertDataUser(username,password);
     }
 
     static void UpdateUser() throws Exception {
