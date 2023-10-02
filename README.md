@@ -1,4 +1,2 @@
 # Kuncen
-Kuncen is a password management program designed with the purpose of guiding password management
-users by keep secure their data. The name "Kuncen" was chosen to describe the role this program plays
-administrator and custodian of user passwords, similar to a "Kuncen Kerajaan" role guarding palaces island of jawa in indonesia.
+Kuncen is a password management program built with a simple, secure and transparent CLI-based designed with the aim of guiding users in password management so that their data remains safe. The name "Kuncen" was chosen to describe the program's role as administrator and keeper of user passwords, similar to the role of "Kuncen Royal" which guarded palaces on the island of Java in Indonesia.
