@@ -8,8 +8,8 @@ public class Users {
     private static ConnectionDb connectionDb = new ConnectionDb();
     private static PasswordManager passwordManager = new PasswordManager();
 
-    public static void Loginuser(String username, String password) throws Exception {
-        connectionDb.CheckDataUser(username,password);
+    public static void Loginuser(String username) throws Exception {
+        connectionDb.CheckDataUser(username);
     }
 
 

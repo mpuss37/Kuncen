@@ -9,10 +9,9 @@ public class Main {
     }
 
     private static void menuMain(String[] args) throws Exception {
-        if (args.length == 3 && args[0].equals("-l") || args[0].equals("--login")) {
+        if (args.length == 2 && args[0].equals("-l") || args[0].equals("--login")) {
             username = String.valueOf(args[1]);
-            password = String.valueOf(args[2]);
-            users.Loginuser(username, password);
+            users.Loginuser(username);
         } else if (args.length == 3 && args[0].equals("-s") || args[0].equals("--signup")) {
             username = String.valueOf(args[1]);
             password = String.valueOf(args[2]);
@@ -24,6 +23,9 @@ public class Main {
                     "  -l, --login [username] [password]    Log in to an existing user account.\n" +
                     "  -s, --signup [username] [password]    Sign up to register user account.\n" +
                     "  -h, --help          Display usage,options and help.\n");
+        } else {
+            System.out.println("kuncen: missing operand\n" +
+                    "Try 'kuncen -h or --help' for more information.");
         }
     }
 

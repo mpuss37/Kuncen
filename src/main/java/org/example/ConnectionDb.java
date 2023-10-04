@@ -4,6 +4,7 @@ import org.sqlite.SQLiteDataSource;
 
 import java.security.Key;
 import java.sql.*;
+import java.util.Scanner;
 
 public class ConnectionDb {
     private SQLiteDataSource sqLiteDataSource = new SQLiteDataSource();
@@ -11,10 +12,11 @@ public class ConnectionDb {
     private PreparedStatement preparedStatement;
     private static String url = "jdbc:sqlite:/home/mpuss/kodingan/inteelij/kuncen/src/main/resources/sql/kuncen.db";
 
-    private static String encryptedTextOne, encryptedPassword, decryptedUsername, decryptedPassword, query;
+    private static String encryptedTextOne, encryptedPassword, decryptedTextOne, decryptedPassword, query;
 
     private static HashPassword hashPassword = new HashPassword();
     private static PasswordManager passwordManager = new PasswordManager();
+    private Scanner scanner = new Scanner(System.in);
 
     public ConnectionDb() {
         CreateTables();
@@ -24,7 +26,6 @@ public class ConnectionDb {
         try {
             connection = ConnectToDatabase();
             if (!TableExists(connection, "users") && !TableExists(connection, "data")) {
-                System.out.println("Tabel success for create");
                 CreateTable("users", connection, "CREATE TABLE IF NOT EXISTS users (" + "id_user INTEGER PRIMARY KEY AUTOINCREMENT," + "username TEXT NOT NULL UNIQUE," + "password TEXT NOT NULL" + ")");
                 CreateTable("data", connection, "CREATE TABLE IF NOT EXISTS data (" + "id INTEGER PRIMARY KEY AUTOINCREMENT," + "id_user INTEGER," + "name_app TEXT NOT NULL," + "password TEXT NOT NULL" + ")");
                 return true;
@@ -37,13 +38,15 @@ public class ConnectionDb {
         }
     }
 
-    public int CheckDataUser(String username, String password) throws Exception {
+    public int CheckDataUser(String username) throws Exception {
         try {
             connection = ConnectToDatabase();
             //konek to database
             Key key = hashPassword.getOrGenerateSecretKey();
             //to take keyhash
             encryptedTextOne = hashPassword.encrypt(username, key);
+            System.out.print("pass : ");
+            String password = scanner.nextLine();
             encryptedPassword = hashPassword.encrypt(password, key);
             //encrypted username,password for validating existing data in the database
             query = "select * from users where username = ? and password = ?";
@@ -55,12 +58,11 @@ public class ConnectionDb {
             preparedStatement.executeQuery();
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
-                System.out.println("data ditemukan");
                 int id_user = resultSet.getInt("id_user");
                 connection.close();
                 passwordManager.menuPasswordManager(id_user);
             } else {
-                System.out.println("data tidak ditemukan");
+                System.out.println("error username / password");
             }
         } catch (SQLException e) {
             //if a 'username' on database is a value > 0 get message to change username and password, Because col 'username' is unique
@@ -85,7 +87,7 @@ public class ConnectionDb {
             System.out.println("success");
         } catch (SQLException e) {
             //if a 'username' on database is a value > 0 get message to change username and password, Because col 'username' is unique
-            System.out.println("use different username / password " + e);
+            System.out.println("use different username / password ");
         }
     }
 
@@ -118,9 +120,118 @@ public class ConnectionDb {
             preparedStatement.setString(3, encryptedPassword);
             preparedStatement.executeUpdate();
             System.out.println("success add pass-manager");
+            connection.close();
         } catch (SQLException e) {
             //if a 'username' on database is a value > 0 get message to change username and password, Because col 'username' is unique
-            System.out.println("salah " + e);
+            System.out.println("error");
+        }
+    }
+
+    public void UpdateDataPasswordManager(int id_user, String name_app, String password, int id_app) throws Exception {
+        try {
+            connection = ConnectToDatabase();
+            Key key = hashPassword.getOrGenerateSecretKey();
+            //to take keyhash
+            encryptedTextOne = hashPassword.encrypt(name_app, key);
+            encryptedPassword = hashPassword.encrypt(password, key);
+            query = "update data set name_app = ?, password = ? where id_user = ? and id = ?";
+            preparedStatement = connection.prepareStatement(query);
+            //object standart sql use for execute sql query
+            preparedStatement.setString(1, encryptedTextOne);
+            preparedStatement.setString(2, encryptedPassword);
+            preparedStatement.setInt(3, id_user);
+            preparedStatement.setInt(4, id_app);
+            preparedStatement.executeUpdate();
+            System.out.println("success add pass-manager");
+            connection.close();
+        } catch (SQLException e) {
+            //if a 'username' on database is a value > 0 get message to change username and password, Because col 'username' is unique
+            System.out.println("error ");
+        }
+    }
+
+    public void DeleteDataPasswordManager(int id_user, int id_app) throws Exception {
+        try {
+            connection = ConnectToDatabase();
+            Key key = hashPassword.getOrGenerateSecretKey();
+            //to take keyhash
+            query = "delete from data where id_user = ? and id = ?";
+            preparedStatement = connection.prepareStatement(query);
+            //object standart sql use for execute sql query
+            preparedStatement.setInt(1, id_user);
+            preparedStatement.setInt(2, id_app);
+            preparedStatement.executeUpdate();
+            System.out.println("success add pass-manager");
+            connection.close();
+        } catch (SQLException e) {
+            //if a 'username' on database is a value > 0 get message to change username and password, Because col 'username' is unique
+            System.out.println("error ");
+        }
+    }
+
+//    public void ReadDataPasswordManager(int id_user, String app_name) throws Exception {
+//        try {
+//            connection = ConnectToDatabase();
+//            Key key = hashPassword.getOrGenerateSecretKey();
+//            //encrypt text it first after that find qith query and get encrypt data on database after that decrypt the data and print it
+//            String encryptedTextOnee = hashPassword.encrypt(app_name, key);
+//            //to take keyhash
+//            query = "select * from data where id_user = ? and name_app like ?";
+//            preparedStatement = connection.prepareStatement(query);
+//            //object standart sql use for execute sql query
+//            preparedStatement.setInt(1, id_user);
+//            preparedStatement.setString(2, "%" + encryptedTextOnee + "%");
+//            preparedStatement.executeQuery();
+//            //resultset for print and execute query
+//            ResultSet resultSet = preparedStatement.executeQuery();
+//            while (resultSet.next()) {
+//                //get encrypt text
+//                int id = resultSet.getInt("id");
+//                encryptedTextOne = resultSet.getString("name_app");
+//                encryptedPassword = resultSet.getString("password");
+//
+//                // decrypt data
+//                decryptedTextOne = hashPassword.decrypt(encryptedTextOne, key);
+//                decryptedPassword = hashPassword.decrypt(encryptedPassword, key);
+//                System.out.println(decryptedTextOne);
+//                System.out.println("id : '" + id + "' pass: '" + decryptedPassword + "'");
+//            }
+//            connection.close();
+//        } catch (SQLException e) {
+//            //if a 'username' on database is a value > 0 get message to change username and password, Because col 'username' is unique
+//            System.out.println(e);
+//        }
+//    }
+
+    public void ListDataPasswordManager(int id_user) throws Exception {
+        try {
+            connection = ConnectToDatabase();
+            Key key = hashPassword.getOrGenerateSecretKey();
+            //to take keyhash
+            query = "select * from data where id_user = ?";
+            preparedStatement = connection.prepareStatement(query);
+            //object standart sql use for execute sql query
+            preparedStatement.setInt(1, id_user);
+            preparedStatement.executeQuery();
+            //resultset for print and execute query
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                //get encrypt text
+                int id = resultSet.getInt("id");
+                encryptedTextOne = resultSet.getString("name_app");
+                encryptedPassword = resultSet.getString("password");
+
+                // decrypt data
+                decryptedTextOne = hashPassword.decrypt(encryptedTextOne, key);
+                decryptedPassword = hashPassword.decrypt(encryptedPassword, key);
+
+                System.out.println("id : '" + id + "' acc: '" + decryptedTextOne + "' pass: '" + decryptedPassword + "'");
+            }
+            connection.close();
+            //if pick / throw data is finish it will to close connection the database so this doesnt happen busy / error database
+        } catch (SQLException e) {
+            //if a 'username' on database is a value > 0 get message to change username and password, Because col 'username' is unique
+            System.out.println(e);
         }
     }
 
