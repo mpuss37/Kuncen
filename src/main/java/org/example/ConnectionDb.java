@@ -2,6 +2,7 @@ package org.example;
 
 import org.sqlite.SQLiteDataSource;
 
+import java.io.Console;
 import java.security.Key;
 import java.sql.*;
 import java.util.Scanner;
@@ -9,10 +10,12 @@ import java.util.Scanner;
 public class ConnectionDb {
     private SQLiteDataSource sqLiteDataSource = new SQLiteDataSource();
     private Connection connection;
+    private Console console;
     private PreparedStatement preparedStatement;
     private static String url = "jdbc:sqlite:/home/mpuss/kodingan/inteelij/kuncen/src/main/resources/sql/kuncen.db";
 
-    private static String encryptedTextOne, encryptedPassword, decryptedTextOne, decryptedPassword, query;
+    private static String encryptedTextOne, encryptedPassword, decryptedTextOne, decryptedPassword, query, password;
+    private char[] passwordArray;
 
     private static HashPassword hashPassword = new HashPassword();
     private static PasswordManager passwordManager = new PasswordManager();
@@ -45,8 +48,15 @@ public class ConnectionDb {
             Key key = hashPassword.getOrGenerateSecretKey();
             //to take keyhash
             encryptedTextOne = hashPassword.encrypt(username, key);
-            System.out.print("pass : ");
-            String password = scanner.nextLine();
+            console = System.console();
+
+            if (console == null) {
+                System.out.print("pass : ");
+                password = scanner.nextLine();
+            } else {
+                passwordArray = console.readPassword("Masukkan password: ");
+                password = String.valueOf(passwordArray);
+            }
             encryptedPassword = hashPassword.encrypt(password, key);
             //encrypted username,password for validating existing data in the database
             query = "select * from users where username = ? and password = ?";
