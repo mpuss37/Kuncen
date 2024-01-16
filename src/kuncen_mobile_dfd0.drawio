@@ -1,0 +1,72 @@
+<mxfile host="app.diagrams.net" modified="2024-01-16T16:06:19.286Z" agent="Mozilla/5.0 (X11; Linux x86_64; rv:121.0) Gecko/20100101 Firefox/121.0" etag="XQWiXB3Q47Oe82VJR15N" version="22.1.19" type="github">
+  <diagram name="Page-1" id="VfNhNSROVsii3vPcz9S6">
+    <mxGraphModel dx="858" dy="436" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="VYf2NwfmI0Hy0eBK4uSf-2" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;edgeStyle=elbowEdgeStyle;elbow=vertical;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="680" y="70" as="targetPoint" />
+            <mxPoint x="453.63961030678934" y="124.36038969321066" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="490" y="30" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="VYf2NwfmI0Hy0eBK4uSf-10" value="&lt;div&gt;Data Registrasi&lt;/div&gt;&lt;div&gt;Data Pelanggan&lt;/div&gt;&lt;div&gt;Data Password&lt;/div&gt;&lt;div&gt;Data Subscribe&lt;br&gt;&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="VYf2NwfmI0Hy0eBK4uSf-2" vertex="1" connectable="0">
+          <mxGeometry x="0.0297" y="2" relative="1" as="geometry">
+            <mxPoint y="11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="VYf2NwfmI0Hy0eBK4uSf-3" value="&lt;div style=&quot;font-size: 20px;&quot;&gt;Kuncen&lt;/div&gt;&lt;div style=&quot;font-size: 20px;&quot;&gt;Pass Manager&lt;br style=&quot;font-size: 20px;&quot;&gt;&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=20;" parent="1" vertex="1">
+          <mxGeometry x="369" y="120" width="170" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="VYf2NwfmI0Hy0eBK4uSf-7" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;elbow=vertical;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="VYf2NwfmI0Hy0eBK4uSf-6" target="VYf2NwfmI0Hy0eBK4uSf-3" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="450" y="320" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="690" y="320" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="VYf2NwfmI0Hy0eBK4uSf-9" value="&lt;div&gt;Informasi Data Pelanggan&lt;/div&gt;&lt;div&gt;Informasi Data Password&lt;/div&gt;&lt;div&gt;Informasi Subscribe&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="VYf2NwfmI0Hy0eBK4uSf-7" vertex="1" connectable="0">
+          <mxGeometry x="0.2582" y="1" relative="1" as="geometry">
+            <mxPoint x="-1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="VYf2NwfmI0Hy0eBK4uSf-6" value="&lt;div style=&quot;font-size: 20px;&quot;&gt;Admin&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=20;" parent="1" vertex="1">
+          <mxGeometry x="605" y="70" width="150" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="VYf2NwfmI0Hy0eBK4uSf-13" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;elbow=vertical;html=1;entryX=0.265;entryY=0.059;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="VYf2NwfmI0Hy0eBK4uSf-11" target="VYf2NwfmI0Hy0eBK4uSf-3" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="400" y="-60" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="280" y="40" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="VYf2NwfmI0Hy0eBK4uSf-14" value="&lt;div&gt;Registrasi&lt;/div&gt;&lt;div&gt;Data Pelanggan&lt;/div&gt;&lt;div&gt;Data Password&lt;/div&gt;&lt;div&gt;Data Subscribe&lt;br&gt;&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="VYf2NwfmI0Hy0eBK4uSf-13" vertex="1" connectable="0">
+          <mxGeometry x="-0.0598" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="VYf2NwfmI0Hy0eBK4uSf-15" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;elbow=horizontal;html=1;entryX=0.176;entryY=0.9;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="VYf2NwfmI0Hy0eBK4uSf-11" target="VYf2NwfmI0Hy0eBK4uSf-3" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="400" y="320" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="300" y="300" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="VYf2NwfmI0Hy0eBK4uSf-16" value="&lt;div&gt;Informasi Subscribe&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="VYf2NwfmI0Hy0eBK4uSf-15" vertex="1" connectable="0">
+          <mxGeometry x="0.0408" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="VYf2NwfmI0Hy0eBK4uSf-11" value="&lt;br&gt;&lt;div&gt;Pelanggan&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=20;" parent="1" vertex="1">
+          <mxGeometry x="110" y="140" width="150" height="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
